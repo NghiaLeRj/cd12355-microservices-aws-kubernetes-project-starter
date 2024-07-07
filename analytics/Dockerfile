@@ -1,6 +1,12 @@
-FROM python:3.8
+FROM python:3.10-slim-buster
 COPY ./ /app
 WORKDIR /app
+
+RUN apt update -y
+
+RUN apt install build-essential -y libpq-dev
+
+RUN pip install --upgrade pip setuptools wheel
 
 RUN pip install -r $PWD/requirements.txt
 
