@@ -47,4 +47,10 @@ spec:
         envFrom:
         - configMapRef:
             name: postgresql-service-postgresql
+        env:
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: DB_PASSWORD
       restartPolicy: Always
